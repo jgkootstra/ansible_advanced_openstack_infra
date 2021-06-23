@@ -18,7 +18,6 @@
   become: false
 
   tasks:
-
     - name: Fetch Instance Info
       os_server_info:
         cloud: openstack
@@ -34,7 +33,6 @@
           - "{{ item.metadata.group }}"
           - "{{ item.metadata.deployment_name }}"
       loop: "{{ r_os_servers.openstack_servers }}"
-
 
 - name: Gather database facts
   hosts: database_servers
@@ -61,6 +59,6 @@
 - import_playbook: provision_database_tier.yml
 - import_playbook: provision_app_tier.yml
 - import_playbook: provision_load_balancer_tier.yml
-- import_playbook: provision_smoketest_db.yml
-- import_playbook: provision_smoketest_app.yml
+#- import_playbook: provision_smoketest_db.yml
+#- import_playbook: provision_smoketest_app.yml
 ...
